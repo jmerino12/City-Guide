@@ -208,10 +208,12 @@
 
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_features"
                     android:layout_toRightOf="@id/featured_background"
                     android:layout_width="match_parent"
+                    tools:listitem="@layout/featured_card_desing"
                     android:background="@color/home_background"
-                    android:layout_height="280dp"/>
+                    android:layout_height="300dp"/>
             </RelativeLayout>
 
             <LinearLayout
@@ -243,8 +245,10 @@
                 </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_mosviewed"
+                    tools:listitem="@layout/the_mosted_card_desing"
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"/>
+                    android:layout_height="170dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -260,7 +264,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Most View"
+                        android:text="Categories"
                         android:textSize="20sp"
                         android:textColor="@color/coloraccent"
                         android:fontFamily="sans-serif-condensed"
@@ -277,7 +281,9 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"/>
+                    android:id="@+id/rv_categories"
+                    tools:listitem="@layout/categories_card_desing"
+                    android:layout_height="150dp"/>
             </LinearLayout>
 
         </LinearLayout>
