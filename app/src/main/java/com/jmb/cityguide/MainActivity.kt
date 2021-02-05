@@ -1,9 +1,11 @@
 package com.jmb.cityguide
 
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
@@ -18,6 +20,7 @@ import com.google.android.material.navigation.NavigationView
 import com.jmb.cityguide.HomeAdapter.*
 
 const val END_SCALE = 0.7F
+
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     lateinit var featuredRecycler: RecyclerView
     lateinit var categoiresRecycler: RecyclerView
@@ -71,15 +74,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.addDrawerListener(object : DrawerLayout.SimpleDrawerListener() {
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
                 super.onDrawerSlide(drawerView, slideOffset)
-                val diffScaledOffset:Float = slideOffset * (1 - END_SCALE)
-                val offsetScaled:Float = 1 - diffScaledOffset
+                val diffScaledOffset: Float = slideOffset * (1 - END_SCALE)
+                val offsetScaled: Float = 1 - diffScaledOffset
 
                 linearLayout.scaleX = offsetScaled
                 linearLayout.scaleY = offsetScaled
 
-                val xOffSet:Float = drawerView.width * slideOffset
-                val xOffSetDiff:Float = linearLayout.width * diffScaledOffset / 2
-                val xTranslation:Float = xOffSet - xOffSetDiff
+                val xOffSet: Float = drawerView.width * slideOffset
+                val xOffSetDiff: Float = linearLayout.width * diffScaledOffset / 2
+                val xTranslation: Float = xOffSet - xOffSetDiff
                 linearLayout.translationX = xTranslation
 
 
@@ -141,6 +144,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.all_categories -> {
+                val intent = Intent(this, AllCategories::class.java).apply {
+                    putExtra(EXTRA_MESSAGE, "message")
+                }
+                startActivity(intent)
+            }
+        }
         return true
     }
 
